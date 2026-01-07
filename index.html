@@ -11,65 +11,45 @@
     <!-- Base CSS -->
     <link rel="stylesheet" href="css/base.css">
 
-    <!-- Thème par défaut (A = version de gauche) -->
+    <!-- Thème par défaut -->
     <link id="theme-style" rel="stylesheet" href="css/style-option-a.css">
 </head>
 <body>
 
-    <!-- Informations utilisateur -->
-    <div class="info">
-        <p><strong>Raccourcis</strong></p>
-        <p>Entrée → Start</p>
-        <p>Espace → Stop</p>
-        <p>Backspace → Reset</p>
-        <p>L → Lap</p>
+<div class="info">
+    <p><strong>Raccourcis</strong></p>
+    <p>Entrée → Start</p>
+    <p>Espace → Stop</p>
+    <p>Backspace → Reset</p>
+    <p>L → Lap</p>
+</div>
+
+<main class="chronometre">
+    <h1 class="chrono-title">Chronomètre</h1>
+
+    <div class="tim">
+        <span id="hours">00</span><span class="unit">h</span>
+        <span id="minutes">00</span><span class="unit">m</span>
+        <span id="seconds">00</span><span class="unit">s</span>
+        <span id="milliseconds">0</span>
     </div>
 
-    <!-- Chronomètre -->
-    <main class="chronometre">
-        <h1 class="chrono-title">Chronomètre</h1>
+    <div class="controls">
+        <button id="start" class="button">Start</button>
+        <button id="stop" class="button">Stop</button>
+        <button id="reset" class="button">Reset</button>
+        <button id="lap" class="button" disabled>Lap</button>
+    </div>
 
-        <div class="tim">
-            <span id="hours">00</span><span class="unit">h</span>
-            <span id="minutes">00</span><span class="unit">m</span>
-            <span id="seconds">00</span><span class="unit">s</span>
-            <span id="milliseconds">0</span>
-        </div>
+    <ul id="laps" class="laps"></ul>
 
-        <div class="controls">
-            <button id="start" class="button">Start</button>
-            <button id="stop" class="button">Stop</button>
-            <button id="reset" class="button">Reset</button>
-            <button id="lap" class="button" disabled>Lap</button>
-        </div>
+    <div class="themes">
+        <button class="theme-btn theme-a" data-theme="a" data-active="true"></button>
+        <button class="theme-btn theme-b" data-theme="b"></button>
+        <button class="theme-btn theme-c" data-theme="c"></button>
+    </div>
+</main>
 
-        <!-- Laps -->
-        <ul id="laps" class="laps"></ul>
-
-        <!-- Theme Switch -->
-        <div class="themes">
-            <button class="theme-btn theme-a" data-theme="a" data-active="true"></button>
-            <button class="theme-btn theme-b" data-theme="b"></button>
-            <button class="theme-btn theme-c" data-theme="c"></button>
-        </div>
-    </main>
-
-    <!-- JS -->
-    <script src="js/script.js"></script>
-    <script>
-        // Theme switch dynamique
-        const themeButtons = document.querySelectorAll('.theme-btn');
-        const themeLink = document.getElementById('theme-style');
-
-        themeButtons.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const theme = btn.dataset.theme;
-                themeLink.href = `css/style-option-${theme}.css`;
-
-                themeButtons.forEach(b => b.dataset.active = 'false');
-                btn.dataset.active = 'true';
-            });
-        });
-    </script>
+<script src="script.js"></script>
 </body>
 </html>
