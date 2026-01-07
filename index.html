@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chronomètre</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- Base CSS (obligatoire) -->
+    <link rel="stylesheet" href="base.css">
+
+    <!-- Thème par défaut (B = Moderne doux) -->
+    <link id="theme-style" rel="stylesheet" href="style-option-b.css">
+</head>
+<body>
+
+    <!-- Informations utilisateur -->
+    <div class="info">
+        <p><strong>Raccourcis</strong></p>
+        <p>Entrée → Start</p>
+        <p>Espace → Stop</p>
+        <p>Backspace → Reset</p>
+        <p>L → Lap</p>
+    </div>
+
+    <!-- Chronomètre -->
+    <main class="chronometre">
+        <h1 class="chrono-title">Chronomètre</h1>
+
+        <div class="tim">
+            <span id="hours">00</span><span class="unit">h</span>
+            <span id="minutes">00</span><span class="unit">m</span>
+            <span id="seconds">00</span><span class="unit">s</span>
+            <span id="milliseconds">0</span>
+        </div>
+
+        <div class="controls">
+            <button id="start" class="button">Start</button>
+            <button id="stop" class="button">Stop</button>
+            <button id="reset" class="button">Reset</button>
+            <button id="lap" class="button" disabled>Lap</button>
+        </div>
+
+        <!-- Laps -->
+        <ul id="laps" class="laps"></ul>
+
+        <!-- Theme Switch -->
+        <div class="themes">
+            <button class="theme-btn theme-a" data-theme="a"></button>
+            <button class="theme-btn theme-b" data-theme="b"></button>
+            <button class="theme-btn theme-c" data-theme="c"></button>
+        </div>
+    </main>
+
+    <!-- JS -->
+    <script src="script.js"></script>
+    <script>
+        // Attach events to buttons after DOM load
+        document.addEventListener("DOMContentLoaded", function() {
+            const startBtn = document.getElementById("start");
+            const stopBtn = document.getElementById("stop");
+            const resetBtn = document.getElementById("reset");
+            const lapBtn = document.getElementById("lap");
+            const themeButtons = document.querySelectorAll(".theme-btn");
+
+            startBtn.addEventListener("click", start);
+            stopBtn.addEventListener("click", stop);
+            resetBtn.addEventListener("click", reset);
+            lapBtn.addEventListener("click", lap);
+
+            themeButtons.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const theme = btn.dataset.theme;
+                    document.getElementById("theme-style").href = `style-option-${theme}.css`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
