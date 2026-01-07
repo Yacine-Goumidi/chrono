@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chronomètre V2</title>
+    <title>Chronomètre</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -11,16 +11,16 @@
     <!-- Base CSS -->
     <link rel="stylesheet" href="css/base.css">
 
-    <!-- Thème par défaut (B = Moderne doux) -->
-    <link id="theme-style" rel="stylesheet" href="css/style-option-b.css">
+    <!-- Thème par défaut (A = version de gauche) -->
+    <link id="theme-style" rel="stylesheet" href="css/style-option-a.css">
 </head>
 <body>
 
     <!-- Informations utilisateur -->
     <div class="info">
         <p><strong>Raccourcis</strong></p>
-        <p>Enter → Start</p>
-        <p>Space → Stop</p>
+        <p>Entrée → Start</p>
+        <p>Espace → Stop</p>
         <p>Backspace → Reset</p>
         <p>L → Lap</p>
     </div>
@@ -48,7 +48,7 @@
 
         <!-- Theme Switch -->
         <div class="themes">
-            <button class="theme-btn theme-a" data-theme="a"></button>
+            <button class="theme-btn theme-a" data-theme="a" data-active="true"></button>
             <button class="theme-btn theme-b" data-theme="b"></button>
             <button class="theme-btn theme-c" data-theme="c"></button>
         </div>

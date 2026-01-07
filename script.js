@@ -35,23 +35,37 @@ function update_chrono() {
 
 // --- Actions ---
 function start() {
-    if (!t) { t = setInterval(update_chrono, 100); startBtn.disabled = true; lapBtn.disabled = false; }
+    if (!t) {
+        t = setInterval(update_chrono, 100);
+        startBtn.disabled = true;
+        lapBtn.disabled = false;
+    }
 }
 
 function stop() {
-    clearInterval(t); t = null; startBtn.disabled = false;
+    clearInterval(t);
+    t = null;
+    startBtn.disabled = false;
 }
 
 function reset() {
-    stop(); ms = 0; s = 0; mn = 0; h = 0; laps = [];
-    hoursEl.textContent = "00"; minutesEl.textContent = "00";
-    secondsEl.textContent = "00"; millisecondsEl.textContent = "0";
-    lapsEl.innerHTML = ""; lapBtn.disabled = true;
+    stop();
+    ms = 0; s = 0; mn = 0; h = 0;
+    laps = [];
+
+    hoursEl.textContent = "00";
+    minutesEl.textContent = "00";
+    secondsEl.textContent = "00";
+    millisecondsEl.textContent = "0";
+
+    lapsEl.innerHTML = "";
+    lapBtn.disabled = true;
 }
 
 function lap() {
     const lapTime = `${h.toString().padStart(2,'0')}:${mn.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}.${ms}`;
     laps.push(lapTime);
+
     const li = document.createElement("li");
     li.textContent = `Lap ${laps.length}: ${lapTime}`;
     lapsEl.appendChild(li);
@@ -72,6 +86,11 @@ themeButtons.forEach(btn => {
     btn.addEventListener("click", () => {
         const theme = btn.dataset.theme;
         themeLink.href = `css/style-option-${theme}.css`;
+
+        // Active visuellement le bouton
+        themeButtons.forEach(b => b.dataset.active = "");
+        btn.dataset.active = "true";
+
         document.body.style.transition = "all 0.4s ease";
     });
 });
@@ -81,3 +100,9 @@ startBtn.addEventListener("click", start);
 stopBtn.addEventListener("click", stop);
 resetBtn.addEventListener("click", reset);
 lapBtn.addEventListener("click", lap);
+
+// --- Set default theme A on load ---
+window.addEventListener("DOMContentLoaded", () => {
+    const defaultBtn = document.querySelector(".theme-btn[data-theme='a']");
+    if(defaultBtn) defaultBtn.click();
+});
