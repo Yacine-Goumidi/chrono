@@ -35,37 +35,23 @@ function update_chrono() {
 
 // --- Actions ---
 function start() {
-    if (!t) {
-        t = setInterval(update_chrono, 100);
-        startBtn.disabled = true;
-        lapBtn.disabled = false;
-    }
+    if (!t) { t = setInterval(update_chrono, 100); startBtn.disabled = true; lapBtn.disabled = false; }
 }
 
 function stop() {
-    clearInterval(t);
-    t = null;
-    startBtn.disabled = false;
+    clearInterval(t); t = null; startBtn.disabled = false;
 }
 
 function reset() {
-    stop();
-    ms = 0; s = 0; mn = 0; h = 0;
-    laps = [];
-
-    hoursEl.textContent = "00";
-    minutesEl.textContent = "00";
-    secondsEl.textContent = "00";
-    millisecondsEl.textContent = "0";
-
-    lapsEl.innerHTML = "";
-    lapBtn.disabled = true;
+    stop(); ms = 0; s = 0; mn = 0; h = 0; laps = [];
+    hoursEl.textContent = "00"; minutesEl.textContent = "00";
+    secondsEl.textContent = "00"; millisecondsEl.textContent = "0";
+    lapsEl.innerHTML = ""; lapBtn.disabled = true;
 }
 
 function lap() {
     const lapTime = `${h.toString().padStart(2,'0')}:${mn.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}.${ms}`;
     laps.push(lapTime);
-
     const li = document.createElement("li");
     li.textContent = `Lap ${laps.length}: ${lapTime}`;
     lapsEl.appendChild(li);
@@ -86,20 +72,8 @@ themeButtons.forEach(btn => {
     btn.addEventListener("click", () => {
         const theme = btn.dataset.theme;
         themeLink.href = `css/style-option-${theme}.css`;
-
-        // Transition fluide
         document.body.style.transition = "all 0.4s ease";
-
-        // Bouton actif
-        themeButtons.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
     });
-});
-
-// Initialiser le bouton actif au chargement (B = par défaut)
-document.addEventListener("DOMContentLoaded", () => {
-    const defaultBtn = document.querySelector('.theme-b');
-    if (defaultBtn) defaultBtn.classList.add("active");
 });
 
 // --- Button clicks ---

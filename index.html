@@ -3,24 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chronomètre</title>
+    <title>Chronomètre V2</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- Base CSS (obligatoire) -->
-    <link rel="stylesheet" href="base.css">
+    <!-- Base CSS -->
+    <link rel="stylesheet" href="css/base.css">
 
     <!-- Thème par défaut (B = Moderne doux) -->
-    <link id="theme-style" rel="stylesheet" href="style-option-b.css">
+    <link id="theme-style" rel="stylesheet" href="css/style-option-b.css">
 </head>
 <body>
 
     <!-- Informations utilisateur -->
     <div class="info">
         <p><strong>Raccourcis</strong></p>
-        <p>Entrée → Start</p>
-        <p>Espace → Stop</p>
+        <p>Enter → Start</p>
+        <p>Space → Stop</p>
         <p>Backspace → Reset</p>
         <p>L → Lap</p>
     </div>
@@ -56,27 +56,5 @@
 
     <!-- JS -->
     <script src="script.js"></script>
-    <script>
-        // Attach events to buttons after DOM load
-        document.addEventListener("DOMContentLoaded", function() {
-            const startBtn = document.getElementById("start");
-            const stopBtn = document.getElementById("stop");
-            const resetBtn = document.getElementById("reset");
-            const lapBtn = document.getElementById("lap");
-            const themeButtons = document.querySelectorAll(".theme-btn");
-
-            startBtn.addEventListener("click", start);
-            stopBtn.addEventListener("click", stop);
-            resetBtn.addEventListener("click", reset);
-            lapBtn.addEventListener("click", lap);
-
-            themeButtons.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    const theme = btn.dataset.theme;
-                    document.getElementById("theme-style").href = `style-option-${theme}.css`;
-                });
-            });
-        });
-    </script>
 </body>
 </html>
