@@ -55,6 +55,21 @@
     </main>
 
     <!-- JS -->
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        // Theme switch dynamique
+        const themeButtons = document.querySelectorAll('.theme-btn');
+        const themeLink = document.getElementById('theme-style');
+
+        themeButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const theme = btn.dataset.theme;
+                themeLink.href = `css/style-option-${theme}.css`;
+
+                themeButtons.forEach(b => b.dataset.active = 'false');
+                btn.dataset.active = 'true';
+            });
+        });
+    </script>
 </body>
 </html>
