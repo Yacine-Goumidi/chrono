@@ -84,7 +84,7 @@ window.addEventListener("keydown", (e) => {
 themeButtons.forEach(btn => {
     btn.addEventListener("click", () => {
         const theme = btn.dataset.theme;
-        themeLink.href = `css/style-option-${theme}.css`;
+        themeLink.href = `CSS/style-option-${theme}.css`;
 
         // Active visuellement le bouton
         themeButtons.forEach(b => b.dataset.active = "");
