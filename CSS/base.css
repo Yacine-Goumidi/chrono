@@ -59,6 +59,10 @@ body {
     font-size: 40px;
     text-shadow: 0 2px 6px rgba(0,0,0,0.25);
     transition: all 0.4s ease;
+
+    /* 🔒 Sécurité responsive */
+    flex-wrap: nowrap;
+    overflow: hidden;
 }
 
 .tim span {
@@ -134,4 +138,40 @@ body {
 .theme-btn[data-active="true"] {
     box-shadow: 0 0 8px 3px rgba(255,255,255,0.8);
     transform: scale(1.2);
+}
+
+/* ========================= */
+/* === MOBILE RESPONSIVE === */
+/* ========================= */
+@media (max-width: 480px) {
+
+    .chronometre {
+        padding: 20px 16px;
+        border-radius: 22px;
+    }
+
+    .chrono-title {
+        font-size: 22px;
+        margin-bottom: 18px;
+    }
+
+    .tim {
+        font-size: 30px;
+        gap: 6px;
+        padding: 14px 8px;
+        align-items: center; /* 🔥 clé mobile */
+    }
+
+    .tim span {
+        min-width: 34px;
+    }
+
+    .unit {
+        font-size: 14px;
+    }
+
+    .info {
+        font-size: 12px;
+        padding: 10px 14px;
+    }
 }
