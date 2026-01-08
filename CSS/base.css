@@ -146,3 +146,35 @@ body {
     box-shadow: 0 0 8px 3px rgba(255,255,255,0.8);
     transform: scale(1.2);
 }
+
+/* ========================= */
+/* === ULTRA SMALL DEVICES (Z FLIP, < 320px) === */
+/* ========================= */
+@media (max-width: 320px) {
+    .tim {
+        font-size: 24px;       /* 🔹 taille plus petite */
+        gap: 4px;              /* 🔹 moins d’espace entre chiffres */
+        padding: 12px 6px;
+    }
+
+    .tim span {
+        min-width: 26px;       /* 🔹 largeur adaptative plus petite */
+    }
+
+    /* 🔹 masquer les unités pour que ça tienne */
+    .unit {
+        display: none;
+    }
+
+    /* 🔹 réduire la taille info */
+    .info {
+        font-size: 11px;
+        padding: 8px 10px;
+    }
+
+    /* 🔹 titre plus petit */
+    .chrono-title {
+        font-size: 20px;
+        margin-bottom: 14px;
+    }
+}
